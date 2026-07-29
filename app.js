@@ -41,7 +41,7 @@ const grassPokemon = pokemon.filter(function (pokemon) {
   return pokemon.type === "grass";
 });
 
-game.party.push(grassPokemon[0], grassPokemon[1], grassPokemon[2]);
+game.party.push(grassPokemon[1], grassPokemon[2], grassPokemon[3]);
 
 console.log(game.party);
 
@@ -55,3 +55,94 @@ for (let i = 0; i < game.gyms.length; i++) {
 }
 
 console.log(game.gyms);
+
+//Exercise 7 
+
+game.party.splice(0, 1, pokemon[1]);
+
+console.log(game.party);
+
+//Exercise 8
+for (let i = 0; i < game.party.length; i++) {
+  console.log(game.party[i].name);
+}
+
+//Exercise 9
+for (let i=0; i < pokemon.length; i++) {
+  if (pokemon[i].starter === true) {
+    console.log(pokemon[i].name);
+  }
+}
+
+
+//Exercise 10
+game.catchPokemon = function (pokemonObj) {
+  game.party.push(pokemonObj);
+};
+game.catchPokemon(pokemon[24]);
+
+console.log(game.party);
+
+//Exercise 11
+game.catchPokemon = function (pokemonObj) {
+  game.party.push(pokemonObj);
+
+  for (let i = 0; i < game.items.length; i++) {
+    if (game.items[i].name === "pokeball") {
+      game.items[i].quantity -= 1;
+    }
+  }
+};
+
+game.catchPokemon(pokemon[53]);
+
+console.log(game.items);
+
+//Exercise 12
+for (let i = 0; i < game.gyms.length; i++) {
+  if (game.gyms[i].difficulty < 6) {
+    game.gyms[i].completed = true;
+  }
+}
+
+console.log(game.gyms);
+
+
+//Exercise 13
+game.gymStatus = function () {
+  const gymTally = {
+    completed: 0,
+    incomplete: 0,
+  };
+
+  for (let i = 0; i < game.gyms.length; i++) {
+    if (game.gyms[i].completed === true) {
+      gymTally.completed += 1;
+    } else {
+      gymTally.incomplete += 1;
+    }
+  }
+
+  console.log(gymTally);
+};
+
+game.gymStatus();
+
+//Exercise 14
+
+game.partyCount = function () {
+  return game.party.length;
+};
+
+console.log(game.partyCount());
+
+//Exercise 15
+for (let i = 0; i < game.gyms.length; i++) {
+  if (game.gyms[i].difficulty < 8) {
+    game.gyms[i].completed = true;
+  }
+}
+
+console.log(game);
+
+ 
